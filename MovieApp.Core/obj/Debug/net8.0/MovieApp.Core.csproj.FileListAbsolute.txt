@@ -1,0 +1,16 @@
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\bin\Debug\net8.0\MovieApp.Core.deps.json
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\bin\Debug\net8.0\MovieApp.Core.runtimeconfig.json
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\bin\Debug\net8.0\MovieApp.Core.dll
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\bin\Debug\net8.0\MovieApp.Core.pdb
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\bin\Debug\net8.0\MovieApp.Core.xml
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.csproj.AssemblyReference.cache
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.AssemblyInfoInputs.cache
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.AssemblyInfo.cs
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.dll
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\refint\MovieApp.Core.dll
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.xml
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.pdb
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\MovieApp.Core.genruntimeconfig.cache
+C:\Users\boral\OneDrive\Desktop\ISS_CU#\MovieApp.Core\obj\Debug\net8.0\ref\MovieApp.Core.dll

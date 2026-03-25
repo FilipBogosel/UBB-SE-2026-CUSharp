@@ -1,0 +1,147 @@
+<UserControl x:Class="MovieApp.UI.Views.BattleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Border Padding="18"
+            Background="#FFF9F1"
+            BorderBrush="#E7D7B6"
+            BorderThickness="1"
+            CornerRadius="16">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="#1F2937"
+                           Text="Battle Arena" />
+                <TextBlock Margin="0,4,0,0"
+                           Foreground="#6B7280"
+                           Text="{Binding StatusMessage}" />
+                <TextBlock Margin="0,14,0,0"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="#0F766E"
+                           Text="{Binding CurrentPoints, StringFormat=Your total points: {0}}" />
+
+                <Grid Margin="0,18,0,0"
+                      Visibility="{Binding HasActiveBattle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Margin="0,0,10,0"
+                            Padding="16"
+                            Background="#FFFDF9"
+                            BorderBrush="#E7D7B6"
+                            BorderThickness="1"
+                            CornerRadius="14">
+                        <StackPanel>
+                            <TextBlock FontSize="22"
+                                       FontWeight="Bold"
+                                       Text="{Binding FirstMovie.Title}" />
+                            <TextBlock Margin="0,6,0,0"
+                                       Foreground="#6B7280"
+                                       Text="{Binding FirstMovie.Year}" />
+                            <Border Width="220"
+                                    Height="320"
+                                    Margin="0,14,0,14"
+                                    HorizontalAlignment="Left"
+                                    CornerRadius="14"
+                                    Background="#E5E7EB"
+                                    ClipToBounds="True">
+                                <Image Source="{Binding FirstMovie.PosterUrl}" Stretch="Fill" />
+                            </Border>
+                            <TextBlock FontWeight="SemiBold"
+                                       Foreground="#0F766E"
+                                       Text="{Binding FirstMovie.AverageRating, StringFormat=Current rating: {0:F1}}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Padding="16"
+                            Background="#FFFDF9"
+                            BorderBrush="#E7D7B6"
+                            BorderThickness="1"
+                            CornerRadius="14">
+                        <StackPanel>
+                            <TextBlock FontSize="22"
+                                       FontWeight="Bold"
+                                       Text="{Binding SecondMovie.Title}" />
+                            <TextBlock Margin="0,6,0,0"
+                                       Foreground="#6B7280"
+                                       Text="{Binding SecondMovie.Year}" />
+                            <Border Width="220"
+                                    Height="320"
+                                    Margin="0,14,0,14"
+                                    HorizontalAlignment="Left"
+                                    CornerRadius="14"
+                                    Background="#E5E7EB"
+                                    ClipToBounds="True">
+                                <Image Source="{Binding SecondMovie.PosterUrl}" Stretch="Fill" />
+                            </Border>
+                            <TextBlock FontWeight="SemiBold"
+                                       Foreground="#0F766E"
+                                       Text="{Binding SecondMovie.AverageRating, StringFormat=Current rating: {0:F1}}" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <StackPanel Margin="0,18,0,0"
+                            Orientation="Horizontal"
+                            Visibility="{Binding HasActiveBattle, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button Padding="16,10"
+                            Background="#C2410C"
+                            BorderThickness="0"
+                            Command="{Binding ToggleBetPanelCommand}"
+                            Content="Bet Now"
+                            Foreground="White" />
+                    <Button Margin="10,0,0,0"
+                            Padding="16,10"
+                            Background="#1D4ED8"
+                            BorderThickness="0"
+                            Command="{Binding RefreshCommand}"
+                            Content="Refresh"
+                            Foreground="White" />
+                </StackPanel>
+
+                <Border Margin="0,18,0,0"
+                        Padding="16"
+                        Background="#FFFDF9"
+                        BorderBrush="#E7D7B6"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Visibility="{Binding IsBetPanelVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <StackPanel>
+                        <TextBlock FontSize="18"
+                                   FontWeight="Bold"
+                                   Text="Place your bet" />
+                        <TextBlock Margin="0,14,0,0" FontWeight="SemiBold" Text="Choose movie" />
+                        <ComboBox Margin="0,6,0,0"
+                                  Padding="8"
+                                  DisplayMemberPath="Title"
+                                  ItemsSource="{Binding MovieChoices}"
+                                  SelectedItem="{Binding SelectedMovieChoice}" />
+                        <TextBlock Margin="0,14,0,0" FontWeight="SemiBold" Text="Point amount" />
+                        <TextBox Margin="0,6,0,0"
+                                 Padding="10"
+                                 Text="{Binding BetAmount, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Margin="0,16,0,0"
+                                Padding="16,10"
+                                HorizontalAlignment="Left"
+                                Background="#0F766E"
+                                BorderThickness="0"
+                                Command="{Binding ConfirmBetCommand}"
+                                Content="Confirm Bet"
+                                Foreground="White" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>

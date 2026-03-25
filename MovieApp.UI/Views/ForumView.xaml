@@ -1,0 +1,105 @@
+<UserControl x:Class="MovieApp.UI.Views.ForumView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MovieApp.UI.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Border Padding="16"
+            Background="#FFF9F1"
+            BorderBrush="#E7D7B6"
+            BorderThickness="1"
+            CornerRadius="16">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#1F2937"
+                           Text="{Binding SelectedMovieTitle, StringFormat=Forum: {0}}" />
+                <TextBlock Margin="0,4,0,0"
+                           Foreground="#6B7280"
+                           Text="{Binding StatusMessage}" />
+                <TextBox Margin="0,14,0,0"
+                         Height="70"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Text="{Binding NewCommentText, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Margin="0,12,0,0"
+                        Padding="14,10"
+                        HorizontalAlignment="Left"
+                        Background="#C2410C"
+                        BorderThickness="0"
+                        Command="{Binding AddCommentCommand}"
+                        Content="Post Comment"
+                        Foreground="White" />
+            </StackPanel>
+
+            <TreeView Grid.Row="1"
+                      Margin="0,18,0,0"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      ItemsSource="{Binding RootComments}">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type local:CommentNodeViewModel}" ItemsSource="{Binding Replies}">
+                        <Border Margin="0,0,0,10"
+                                Padding="12"
+                                Background="#FFFDF9"
+                                BorderBrush="#E7D7B6"
+                                BorderThickness="1"
+                                CornerRadius="12">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" Text="{Binding AuthorLabel}" />
+                                <TextBlock Margin="0,4,0,0"
+                                           Foreground="#6B7280"
+                                           Text="{Binding CreatedAt, StringFormat={}{0:g}}" />
+                                <TextBlock Margin="0,8,0,0"
+                                           TextWrapping="Wrap"
+                                           Text="{Binding Content}" />
+                                <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                                    <Button Padding="10,6"
+                                            Background="#1D4ED8"
+                                            BorderThickness="0"
+                                            Command="{Binding ToggleReplyCommand}"
+                                            Content="Reply"
+                                            Foreground="White" />
+                                    <Button Margin="8,0,0,0"
+                                            Padding="10,6"
+                                            Background="#7F1D1D"
+                                            BorderThickness="0"
+                                            Command="{Binding DeleteCommand}"
+                                            Content="Delete"
+                                            Foreground="White" />
+                                </StackPanel>
+                                <StackPanel Margin="0,10,0,0"
+                                            Visibility="{Binding IsReplyEditorVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    <TextBox Height="60"
+                                             AcceptsReturn="True"
+                                             TextWrapping="Wrap"
+                                             VerticalScrollBarVisibility="Auto"
+                                             Text="{Binding ReplyText, UpdateSourceTrigger=PropertyChanged}" />
+                                    <Button Margin="0,8,0,0"
+                                            Padding="10,6"
+                                            HorizontalAlignment="Left"
+                                            Background="#0F766E"
+                                            BorderThickness="0"
+                                            Command="{Binding SubmitReplyCommand}"
+                                            Content="Submit Reply"
+                                            Foreground="White" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </HierarchicalDataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+        </Grid>
+    </Border>
+</UserControl>
